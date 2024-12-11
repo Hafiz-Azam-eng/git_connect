@@ -32,6 +32,9 @@ gem 'devise'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
+gem 'tailwindcss-rails'
+
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false

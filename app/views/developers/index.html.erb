@@ -1,0 +1,30 @@
+<h1 class="text-4xl font-bold text-center my-6 text-gray-800">Registered Developers</h1>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+  <% @developers.each do |developer| %>
+    <div class="developer-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all">
+      <div class="text-center">
+        <!-- Developer's Profile Picture -->
+        <% if developer.profile_picture.attached? %>
+          <%= image_tag developer.profile_picture, alt: "#{developer.name}'s profile picture", class: "w-32 h-32 rounded-full mx-auto object-cover" %>
+        <% else %>
+          <div class="w-32 h-32 rounded-full bg-gray-300 mx-auto"></div> <!-- Placeholder if no image -->
+        <% end %>
+
+        <!-- Developer's Name -->
+        <h2 class="text-2xl font-semibold mt-4 text-gray-900"><%= developer.name %></h2>
+      </div>
+
+      <!-- Developer's Headline -->
+      <p class="text-gray-700 mt-2 text-center"><%= developer.headline %></p>
+
+      <!-- Developer's Key Skills -->
+      <div class="mt-4">
+        <p class="font-medium text-gray-800">Key Skills:</p>
+        <p class="text-gray-600"><%= developer.key_skills %></p>
+      </div>
+
+    
+    </div>
+  <% end %>
+</div>
