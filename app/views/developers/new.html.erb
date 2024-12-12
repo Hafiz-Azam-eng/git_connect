@@ -1,0 +1,54 @@
+<h1>Create Developer Profile</h1>
+
+<%= form_with model: @developer, local: true, html: { multipart: true } do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true %>
+  </div>
+
+  <div>
+    <%= f.label :profile_picture %>
+    <%= f.file_field :profile_picture, accept: "image/png,image/jpeg" %>
+    <small>Upload a profile picture (JPEG or PNG only).</small>
+  </div>
+
+  <div>
+    <%= f.label :headline %>
+    <%= f.text_field :headline %>
+  </div>
+
+  <div>
+    <%= f.label :key_skills %>
+    <%= f.text_area :key_skills %>
+    <small>Separate skills with commas (e.g., Ruby, JavaScript).</small>
+  </div>
+
+  <div>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div>
+    <%= f.label :country %>
+    <%= f.text_field :country %>
+  </div>
+
+  <div>
+    <%= f.label :experience_years %>
+    <%= f.number_field :experience_years, min: 0 %>
+  </div>
+
+  <div>
+    <%= f.label :available_for_mentorship %>
+    <%= f.check_box :available_for_mentorship %>
+  </div>
+
+  <div>
+    <%= f.label :available_for_collaboration %>
+    <%= f.check_box :available_for_collaboration %>
+  </div>
+
+  <div>
+    <%= f.submit "Create Profile" %>
+  </div>
+<% end %>
