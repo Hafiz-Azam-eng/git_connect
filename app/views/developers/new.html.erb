@@ -1,4 +1,4 @@
-<h1>Create Developer Profile</h1>
+<h1><%= @developer.new_record? ? 'Create Developer Profile' : 'Edit Developer Profile' %></h1>
 
 <%= form_with model: @developer, local: true, html: { multipart: true } do |f| %>
   <div>
@@ -48,7 +48,73 @@
     <%= f.check_box :available_for_collaboration %>
   </div>
 
+  <!-- Additional Details -->
   <div>
-    <%= f.submit "Create Profile" %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :contact_info %>
+    <%= f.text_area :contact_info %>
+  </div>
+
+  <div>
+    <%= f.label :social_media_links %>
+    <%= f.text_area :social_media_links, placeholder: "e.g., LinkedIn, GitHub, Twitter" %>
+  </div>
+
+  <div>
+    <%= f.label :degree %>
+    <%= f.text_field :degree %>
+  </div>
+
+  <div>
+    <%= f.label :institution %>
+    <%= f.text_field :institution %>
+  </div>
+
+  <div>
+    <%= f.label :graduation_date %>
+    <%= f.date_field :graduation_date %>
+  </div>
+
+  <div>
+    <%= f.label :job_position %>
+    <%= f.text_field :job_position %>
+  </div>
+
+  <div>
+    <%= f.label :company %>
+    <%= f.text_field :company %>
+  </div>
+
+  <div>
+    <%= f.label :duration %>
+    <%= f.text_field :duration %>
+  </div>
+
+  <div>
+    <%= f.label :responsibilities %>
+    <%= f.text_area :responsibilities %>
+  </div>
+
+  <div>
+    <%= f.label :project_description %>
+    <%= f.text_area :project_description %>
+  </div>
+
+  <div>
+    <%= f.label :live_demo_link %>
+    <%= f.text_field :live_demo_link %>
+  </div>
+
+  <div>
+    <%= f.label :project_screenshot %>
+    <%= f.file_field :project_screenshot %>
+  </div>
+
+  <div>
+    <%= f.submit @developer.new_record? ? "Create Profile" : "Update Profile" %>
   </div>
 <% end %>

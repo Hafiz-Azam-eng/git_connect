@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_12_082058) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_13_075330) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -54,6 +54,18 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_12_082058) do
     t.integer "experience_years"
     t.boolean "available_for_mentorship"
     t.boolean "available_for_collaboration"
+    t.string "email"
+    t.text "contact_info"
+    t.text "social_media_links"
+    t.string "degree"
+    t.string "institution"
+    t.date "graduation_date"
+    t.string "job_position"
+    t.string "company"
+    t.string "duration"
+    t.text "responsibilities"
+    t.text "project_description"
+    t.text "live_demo_link"
     t.index ["user_id"], name: "index_developers_on_user_id"
   end
 

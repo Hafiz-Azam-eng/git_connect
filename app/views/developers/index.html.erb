@@ -64,7 +64,9 @@
       <div class="text-center">
         <!-- Developer's Profile Picture -->
         <% if developer.profile_picture.attached? %>
-          <%= image_tag developer.profile_picture, alt: "#{developer.name}'s profile picture", class: "w-32 h-32 rounded-full mx-auto object-cover" %>
+          <%= link_to developer_path(developer) do %>
+            <%= image_tag developer.profile_picture, alt: "#{developer.name}'s profile picture", class: "w-32 h-32 rounded-full mx-auto object-cover" %>
+          <% end %>
         <% else %>
           <div class="w-32 h-32 rounded-full bg-gray-300 mx-auto"></div> <!-- Placeholder if no image -->
         <% end %>
