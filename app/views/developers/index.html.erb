@@ -1,0 +1,88 @@
+<!-- Heading -->
+<div class="bg-gray-100 py-4">
+  <h1 class="text-4xl font-bold text-center my-4 text-gray-800">Registered Developers</h1>
+</div>
+
+<!-- Filtering Form -->
+<div class="bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto my-8">
+  <h2 class="text-2xl font-semibold mb-4 text-gray-800">Filter Developers</h2>
+
+  <%= form_with url: developers_path, method: :get, local: true do |f| %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Skill Set Field -->
+      <div class="col-span-1 lg:col-span-3">
+        <label class="block font-medium text-gray-700 mb-1" for="skill">Skill Set</label>
+        <%= f.text_field :skill, value: params[:skill], placeholder: "e.g., Ruby, JavaScript", 
+          class: "w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" %>
+      </div>
+
+      <!-- City Field -->
+      <div>
+        <label class="block font-medium text-gray-700 mb-1" for="city">City</label>
+        <%= f.text_field :city, value: params[:city], placeholder: "e.g., Lahore", 
+          class: "w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" %>
+      </div>
+
+      <!-- Country Field -->
+      <div>
+        <label class="block font-medium text-gray-700 mb-1" for="country">Country</label>
+        <%= f.text_field :country, value: params[:country], placeholder: "e.g., Pakistan", 
+          class: "w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" %>
+      </div>
+
+      <!-- Experience Field -->
+      <div>
+        <label class="block font-medium text-gray-700 mb-1" for="experience">Years of Experience</label>
+        <%= f.number_field :experience, value: params[:experience], min: 0, placeholder: "e.g., 3", 
+          class: "w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200" %>
+      </div>
+
+      <!-- Mentorship Checkbox -->
+      <div class="flex items-center space-x-2">
+        <%= f.check_box :mentorship, { class: "h-4 w-4 text-blue-600 border-gray-300 rounded" }, true, false %>
+        <%= f.label :mentorship, "Available for Mentorship", class: "text-gray-700" %>
+      </div>
+
+      <!-- Collaboration Checkbox -->
+      <div class="flex items-center space-x-2">
+        <%= f.check_box :collaboration, { class: "h-4 w-4 text-blue-600 border-gray-300 rounded" }, true, false %>
+        <%= f.label :collaboration, "Available for Collaboration", class: "text-gray-700" %>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mt-6 text-right">
+      <%= f.submit "Filter", class: "px-6 py-2 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700 transition" %>
+    </div>
+  <% end %>
+</div>
+
+<!-- Developer Listing -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+  <% @developers.each do |developer| %>
+    <div class="developer-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all">
+      <div class="text-center">
+        <!-- Developer's Profile Picture -->
+        <% if developer.profile_picture.attached? %>
+          <%= link_to developer_path(developer) do %>
+            <%= image_tag developer.profile_picture, alt: "#{developer.name}'s profile picture", class: "w-32 h-32 rounded-full mx-auto object-cover" %>
+          <% end %>
+        <% else %>
+          <div class="w-32 h-32 rounded-full bg-gray-300 mx-auto"></div> <!-- Placeholder if no image -->
+        <% end %>
+
+        <!-- Developer's Name -->
+        <h2 class="text-2xl font-semibold mt-4 text-gray-900"><%= developer.name %></h2>
+      </div>
+
+      <!-- Developer's Headline -->
+      <p class="text-gray-700 mt-2 text-center"><%= developer.headline %></p>
+
+      <!-- Developer's Key Skills -->
+      <div class="mt-4">
+        <p class="font-medium text-gray-800">Key Skills:</p>
+        <p class="text-gray-600"><%= developer.key_skills %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

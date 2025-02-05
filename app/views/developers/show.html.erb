@@ -1,0 +1,77 @@
+<div class="container mx-auto px-4 py-8">
+  <!-- Header -->
+  <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-8">
+    Developer Profile
+  </h1>
+
+  <div>
+  <% if user_signed_in? && current_user == @developer.user %>
+  <p>You are signed in as <%= current_user.email %></p>
+<% else %>
+  <p>You are not signed in.</p>
+<% end %>
+
+  </div>
+
+  <!-- Developer Details -->
+  <div class="bg-white shadow rounded-lg p-6">
+    <!-- Personal Details Section -->
+    <div class="border-b pb-6 mb-6">
+      <h2 class="text-2xl font-bold text-gray-800">Personal Details</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+        <p><strong class="text-gray-700">Name:</strong> <%= @developer.name %></p>
+        <p><strong class="text-gray-700">Email:</strong> <%= @developer.email %></p>
+        <p><strong class="text-gray-700">Contact Info:</strong> <%= @developer.contact_info %></p>
+        <p><strong class="text-gray-700">Social Media Links:</strong> 
+          <%= @developer.social_media_links %>
+        </p>
+      </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="border-b pb-6 mb-6">
+      <h2 class="text-2xl font-bold text-gray-800">Education</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+        <p><strong class="text-gray-700">Degree:</strong> <%= @developer.degree %></p>
+        <p><strong class="text-gray-700">Institution:</strong> <%= @developer.institution %></p>
+        <p><strong class="text-gray-700">Graduation Date:</strong> 
+          <%= @developer.graduation_date %>
+        </p>
+      </div>
+    </div>
+
+    <!-- Work Experience Section -->
+    <div class="border-b pb-6 mb-6">
+      <h2 class="text-2xl font-bold text-gray-800">Work Experience</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+        <p><strong class="text-gray-700">Job Position:</strong> <%= @developer.job_position %></p>
+        <p><strong class="text-gray-700">Company:</strong> <%= @developer.company %></p>
+        <p><strong class="text-gray-700">Duration:</strong> <%= @developer.duration %></p>
+        <p><strong class="text-gray-700">Responsibilities:</strong> 
+          <%= @developer.responsibilities %>
+        </p>
+      </div>
+    </div>
+
+    <!-- Portfolio Projects Section -->
+    <div>
+      <h2 class="text-2xl font-bold text-gray-800">Portfolio Projects</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+        <p><strong class="text-gray-700">Project Description:</strong> 
+          <%= @developer.project_description %>
+        </p>
+        <div class="text-center mt-8">
+        <% if user_signed_in? && current_user == @developer.user %>
+              <%= link_to "Edit Profile", edit_developer_path(@developer) %>
+        <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Profile Button -->
+  <div class="text-center mt-8">
+  
+  </div>
+</div>
