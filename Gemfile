@@ -28,11 +28,11 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
-gem 'devise'
+gem "devise"
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem "dotenv-rails", groups: [ :development, :test ]
 
-gem 'tailwindcss-rails'
+gem "tailwindcss-rails"
 
 
 
